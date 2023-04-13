@@ -6,7 +6,7 @@ Firefox und Chromium gibt es in den aktuellen Ubuntus nicht mehr in den offiziel
 
 **Es ist also mehr zu beachten:** Per APT-Pinning muss das nachträglich installierte DEB eine höhere Priorität bekommen als das Snap-Paket aus den regulären Quellen. Gut ist es außerdem, falls die unbeaufsichtigten Updates aktiviert sind, diese auf Firefox beziehungsweise Chromium automatisch auf den neusten Stand bringen. Insgesamt kommen hier eine Menge kleine Handgriffe im Terminal zusammen, die in der Wiederholung auf mehreren Ubuntu-Systemen lästig werden. Wir haben deshalb für die Installation von Firefox und Chromium über die genannten PPAs jeweils ein Shell-Script erstellt, dass diese Handgriffe übernimmt und dabei gut nachvollziehbar ist. Für Firefox ist das Script "deb-firefox.sh" im Unterverzeichnis "Software" auf der Heft-DVD, und für Chromium erledigt "deb-chromium.sh" die Installation. Zuvor werden die Browser als Snap erst deinstalliert, falls vorhanden. Diese Aktionen verlangen nach dem sudo-Passwort und fragen dies im Terminal zuvor ab. Um eines der Scripts zu starten, kopiert man es in einen beliebigen Ordner, macht es mit
 ```
-chmod +x  deb-firefox.sh
+chmod +x deb-firefox.sh
 ```
 ausführbar und ruft es dann mit
 ```
