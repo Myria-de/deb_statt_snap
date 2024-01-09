@@ -2,7 +2,7 @@
 
 **Update 08.01.2024:** Das Firefox-Systempaket aus dem PPA https://launchpad.net/~mozillateam/+archive/ubuntu/ppa ist zurzeit ohne Unterstützung für die VA-API (siehe https://github.com/Myria-de/Hardware-video-acceleration) kompiliert. Wer die VA-API für die Hardwarebeschleunigung in Firefox verwenden möchte, muss daher das Binärpaket von Mozilla verwenden (https://ftp.mozilla.org/pub/firefox/releases/, siehe im letzten Punkt dieses Artikels). 
 
-Folgen Sie der nachfolgenden Anleitung, um das Systempaket aus dem PPA zu installieren. Danach laden Sie beispielsweise https://ftp.mozilla.org/pub/firefox/releases/121.0/linux-x86_64/de/ herunter und entpacken das Archiv in Ihr Home-Verzeichnis. 
+Folgen Sie der nachfolgenden Anleitung, um das Systempaket aus dem PPA zu installieren. Danach laden Sie beispielsweise https://ftp.mozilla.org/pub/firefox/releases/121.0/linux-x86_64/de/ herunter und entpacken das Archiv in Ihr Home-Verzeichnis. Es ist allerdings nicht zwingend erforderlich, das Snap-Paket zu entfernen. Das Binär- und Snap-Paket lässt sich auch nebeneinander verwenden.
 
 **Wichtig:** Eine Deinstallation des Snap-Pakets löscht alle vorhandenen Profildaten, Lesezeichen und eventuell gespeicherten Passwörter. Diese Daten sollte man deshalb zuvor sichern  und danach im klassischen DEB-Browser wiederherstellen.
 
@@ -41,4 +41,6 @@ ausführbar und ruft es dann mit
 auf. Das Script "deb-chromium.sh" verlangt die gleiche Behandlung. Die weiteren Schritte sind in der Ausgabe des jeweiligen Scripts erläutert und es gibt auch eine kurze Anleitung, wieder das Snap zu installieren, falls gewünscht.
 
 # Firefox über das Binärpaket installieren
+Das Binärpaket von https://ftp.mozilla.org/pub/firefox/releases/ lässt sich neben dem Systempaket installieren und nutzen (nicht gleichzeitig starten). Gehen Sie in den Ordner mit der gewünschten Version, zurzeit beispielsweise https://ftp.mozilla.org/pub/firefox/releases/102.0.1 (oder höher). Wechseln Sie in den Ordner "linux-x86_64/de/" und laden Sie für unser Beispiel "firefox-102.0.1.tar.bz2" herunter. Entpacken Sie das Archiv beispielsweise in den Ordner "firefox" in Ihrem Home-Verzeichnis. Starten Sie firefox aus diesem Ordnern. Danch stellen Sie den Profilordner wieder her, wie oben beschrieben.
+
 
