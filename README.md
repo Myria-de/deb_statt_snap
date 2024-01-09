@@ -1,6 +1,10 @@
 # Firefox und Chromium als DEB-Paket für Ubuntu installieren
 
-**Update 08.01.2024:** Das Firefox-Systempaket aus dem PPA https://launchpad.net/~mozillateam/+archive/ubuntu/ppa ist zurzeit ohne Unterstützung für die VA-API (siehe https://github.com/Myria-de/Hardware-video-acceleration) kompiliert. Wer die VA-API für die Hardwarebeschleunigung in Firefox verwenden möchte, muss daher das Binärpaket von Mozilla verwenden (https://ftp.mozilla.org/pub/firefox/releases/). Folgen Sie der nachfolgenden Anleitung, um das Systempaket aus dem PPA zu installieren. Danach laden Sie beispielsweise https://ftp.mozilla.org/pub/firefox/releases/121.0/linux-x86_64/de/ herunter und entpacken das Archiv in Ihr Home-Verzeichnis. 
+**Update 08.01.2024:** Das Firefox-Systempaket aus dem PPA https://launchpad.net/~mozillateam/+archive/ubuntu/ppa ist zurzeit ohne Unterstützung für die VA-API (siehe https://github.com/Myria-de/Hardware-video-acceleration) kompiliert. Wer die VA-API für die Hardwarebeschleunigung in Firefox verwenden möchte, muss daher das Binärpaket von Mozilla verwenden (https://ftp.mozilla.org/pub/firefox/releases/, siehe im letzten Punkt dieses Artikels). 
+
+Folgen Sie der nachfolgenden Anleitung, um das Systempaket aus dem PPA zu installieren. Danach laden Sie beispielsweise https://ftp.mozilla.org/pub/firefox/releases/121.0/linux-x86_64/de/ herunter und entpacken das Archiv in Ihr Home-Verzeichnis. 
+
+**Wichtig:** Eine Deinstallation des Snap-Pakets löscht alle vorhandenen Profildaten, Lesezeichen und eventuell gespeicherten Passwörter. Diese Daten sollte man deshalb zuvor sichern  und danach im klassischen DEB-Browser wiederherstellen.
 
 # Firefox-Profil sichern
 Bevor Sie die Snap-App entfernen, erstellen Sie ein Backup Ihres Firefox-Profils. Das ist sinvoll, wenn Sie in Firefox Lesezeichen, Passwörter etc. speichern. Zu Sicherheit sollten Sie ein Backup auch erstellen, wenn Sie sich in Firefox mit einem Mozilla-Konto anmelden und die Synchronisierung der Daten aktiviert haben. Achten Sie darauf, dass die Synchronisierung abgeschlossen ist.
@@ -14,7 +18,9 @@ Die Wiederherstellung ist nur möglich, wenn Sie die gleiche oder einen neurer F
 Danach erstellen Sie den neuen Ordner "ogup4l3n.default-release". Kopieren Sie den Inhalt des gesicherten Profilordners - nicht den Ordner selbst - in den Ordner "ogup4l3n.default-release". In unserem Beispiel kopieren Sie den Inhalt von "88f7mmyo.default" in den Ordner "ogup4l3n.default-release"
 
 # Chromium-Profil sichern
-Chromium synchronisiert die Benutzerdaten automatisch, wenn Sie mit einem Google-Konto angemeldet sind. Für ein manuelles Backup ermitteln Sie in Chromium den Profilpfad über die URL "chrome://version". Bei er Snap-Version liegt er im Ordner "snap/chromium/common/chromium/Default" in Ihrem Home-Verzeichnis. **Beenden Sie Chromium** und packen Sie den Ordner in ein ZIP- oder xz-Archiv. 
+Chromium synchronisiert die Benutzerdaten automatisch, wenn Sie mit einem Google-Konto angemeldet sind. Für ein manuelles Backup ermitteln Sie in Chromium den Profilpfad über die URL "chrome://version". Bei er Snap-Version liegt er im Ordner "snap/chromium/common/chromium/Default" in Ihrem Home-Verzeichnis.
+
+**Beenden Sie Chromium** und packen Sie den Ordner in ein ZIP- oder xz-Archiv. 
 
 # Chromium-Profil wiederherstellen
 Auch bei Chromium muss die Version von der das Backup stammt gleich oder neuer wie die jetzt verwendete Version sein. Starten Sie die neu installierte Chromium-Version und ermitteln Sie den Profilpfad über die URL "chrome://version". Beim Systempaket wird der versteckte Ordner ".config/chromium/Default" verwendet (einblenden mit Strg-H).  **Beenden Sie Chromium**. Benennen Sie den Ordner um und kopieren Sie den Ordner "default" aus dem Backup nach ".config/chromium".
@@ -34,4 +40,5 @@ ausführbar und ruft es dann mit
 ```
 auf. Das Script "deb-chromium.sh" verlangt die gleiche Behandlung. Die weiteren Schritte sind in der Ausgabe des jeweiligen Scripts erläutert und es gibt auch eine kurze Anleitung, wieder das Snap zu installieren, falls gewünscht.
 
-**Hinweis:** Eine Deinstallation des Snap-Pakets löscht dann alle vorhandenen Profildaten, Lesezeichen und eventuell gespeicherten Passwörter. Diese Daten sollte man deshalb zuvor exportieren und danach im klassischen DEB-Browser wieder importieren.
+# Firefox über das Binärpaket installieren
+
