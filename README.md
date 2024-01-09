@@ -10,7 +10,15 @@ Wo der Profilodner liegt und wie er heißt ermittlen Sie über die URL "about:pr
 **Beenden Sie Firefox** und packen Sie den Ordner beispielsweise über den Dateimanager in eine ZIP- oder xz-Datei.
 
 # Firefox-Profil wiederherstellen
-Die Wiederherstellung ist nur möglich, wenn Sie die gleiche oder einen neurer Firefox-Version verwenden. Wenn Sie das Systempaket oder die Binärdateien von Mizilla eingerichgtet haben, starten Sie Firefox und ermittlen Sie über "about:profiles" den Profilordner. **Beenden Sie Firefox wieder**. Über den Dateimanager benenen Sie den Profilordner um beispielsweise von "ogup4l3n.default-release" in "ogup4l3n.default-release.001". Danach erstelen Sie den neuen Ordner "ogup4l3n.default-release". Kopieren Sie den Inhalt des gesicherten Profilordners - nicht den Ordner selbst - in den Ordner "ogup4l3n.default-release". In unserem Beispiel kopieren Sie den Inhalt von "88f7mmyo.default" in den Ordner "ogup4l3n.default-release"
+Die Wiederherstellung ist nur möglich, wenn Sie die gleiche oder einen neurer Firefox-Version verwenden. Wenn Sie das Systempaket oder die Binärdateien von Mozilla eingerichtet haben, starten Sie Firefox und ermittlen Sie über "about:profiles" den Profilordner. **Beenden Sie Firefox wieder**. Über den Dateimanager benenen Sie den Profilordner um beispielsweise von "ogup4l3n.default-release" in "ogup4l3n.default-release.001". Beim Systempaket liegt das Profil im versteckten Ordner ".mozilla/firefox" (im Dateimanager einblenden mit Strg-H).
+Danach erstellen Sie den neuen Ordner "ogup4l3n.default-release". Kopieren Sie den Inhalt des gesicherten Profilordners - nicht den Ordner selbst - in den Ordner "ogup4l3n.default-release". In unserem Beispiel kopieren Sie den Inhalt von "88f7mmyo.default" in den Ordner "ogup4l3n.default-release"
+
+# Chromium-Profil sichern
+Chromium synchronisiert die Benutzerdaten automatisch, wenn Sie mit einem Google-Konto angemeldet sind. Für ein manuelles Backup ermitteln Sie in Chromium den Profilpfad über die URL "chrome://version". Bei er Snap-Version liegt er im Ordner "snap/chromium/common/chromium/Default" in Ihrem Home-Verzeichnis. **Beenden Sie Chromium** und packen Sie den Ordner in ein ZIP- oder xz-Archiv. 
+
+# Chromium-Profil wiederherstellen
+Auch bei Chromium muss die Version von der das Backup stammt gleich oder neuer wie die jetzt verwendete Version sein. Den Profilpfad ermitteln Sie über die URL "chrome://version". Beim Systempaket wird der Ordner "" verwendet.
+
 
 # Ubuntu mit Snap-Paketen
 Als Canonical ausgerechnet Chromium und dann auch noch den Standardbrowser Firefox als Snap-Paket in Ubuntu auslieferte, war die Skepsis bei vielen Anwendern zurecht groß. Denn die Browser starten als Snap zu langsam, und einige Add-Ons wollten auch nicht mehr funktionieren, weil Berechtigungen fehlen. Mittlerweile hat Canonical bei der Einbindung von Firefox nachgebessert - der Start ist deutlich flotter und viele Erweiterungen wie etwa die Gnome-Browsererweiterung zur Einbindung von Gnome-Shell-Extensions von https://extensions.gnome.org funktionieren wieder. Dennoch bleibt der Start auf Systemen mit schwächeren CPUs zunächst bei beiden Browsern schleppend, denn Snaps liefern ein gepacktes Dateisystem mit, das erst mal dekomprimiert werden will.
