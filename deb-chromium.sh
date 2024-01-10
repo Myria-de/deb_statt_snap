@@ -9,8 +9,8 @@ cat <<HEREDOC
 |_______ \__|___|  /____//__/\_ \ \__/\  /  \___  >____/__|
         \/       \/            \/      \/       \/
 
-Dieses Script dient dazu, Google Chromium als DEB aus dem PPA
-https://launchpad.net/~phd/+archive/ubuntu/chromium-browser in
+Dieses Script dient dazu, Google Chromium als DEB von
+https://freeshell.de/phd/chromium/ (Linux-Mint-Version) in
 Ubuntu 22.04 LTS / 22.10 / 23.04 zu installieren. Falls Chromium
 als Snap schon installiert ist, so entfernt das Script diese 
 Version zuerst.
@@ -36,6 +36,7 @@ if ! [[ "$response" =~ ^(ja|j)$ ]]; then
 fi
 
 $SUDO snap remove chromium
+$SUDO apt -y remove chromium-browser
 
 read -r -p "Soll Chromium nun als DEB installiert werden werden? [j/n] " response
 response=${response,,}    # tolower
@@ -43,18 +44,37 @@ if ! [[ "$response" =~ ^(ja|j)$ ]]; then
   exit
 fi
 
-$SUDO add-apt-repository ppa:phd/chromium-browser
+#https://freeshell.de/
+source /etc/lsb-release
+echo "deb https://freeshell.de/phd/chromium/${DISTRIB_CODENAME} /" \
+| $SUDO tee /etc/apt/sources.list.d/phd-chromium.list
+
+#$SUDO apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 869689FE09306074
+cd ~
+gpg --no-default-keyring --keyring gnupg-ring:~/phd-ubuntu-chromium-browser.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 869689FE09306074
+$SUDO  mv phd-ubuntu-chromium-browser.gpg /etc/apt/trusted.gpg.d/
+$SUDO  chown root:root /etc/apt/trusted.gpg.d/phd-ubuntu-chromium-browser.gpg
+$SUDO  chmod ugo+r /etc/apt/trusted.gpg.d/phd-ubuntu-chromium-browser.gpg
+$SUDO  chmod go-w /etc/apt/trusted.gpg.d/phd-ubuntu-chromium-browser.gpg
+
+#$SUDO add-apt-repository ppa:phd/chromium-browser
 $SUDO apt update 
 
 echo '
+# chromium
 Package: *
-Pin: release o=LP-PPA-phd-chromium-browser
+Pin: release origin "freeshell.de"
 Pin-Priority: 1001
+
+Package: chromium*
+Pin: origin "freeshell.de"
+Pin-Priority: 700
+
 ' | $SUDO tee /etc/apt/preferences.d/phd-chromium-browser
 
-echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-phd-chromium-browser:${distro_codename}";' | $SUDO tee /etc/apt/apt.conf.d/52unattended-upgrades-chromium
+echo 'Unattended-Upgrade::Allowed-Origins:: "freeshell.de/phd/chromium:${distro_codename}";' | $SUDO tee /etc/apt/apt.conf.d/52unattended-upgrades-chromium
 
-$SUDO apt install -y chromium-browser
+$SUDO apt install -y chromium
 
 cat <<EOF
 
