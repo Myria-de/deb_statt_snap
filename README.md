@@ -1,5 +1,5 @@
 # Firefox und Chromium als DEB-Paket für Ubuntu installieren
-Die Beschreibung in diesem Atikel wurde unter Ubunti 22.04 getestet.
+Die Beschreibung in diesem Atikel wurde unter **Ubuntu 22.04** getestet.
 
 **Update 08.01.2024:** Das Firefox-Systempaket aus dem PPA https://launchpad.net/~mozillateam/+archive/ubuntu/ppa ist zurzeit ohne Unterstützung für die VA-API (siehe https://github.com/Myria-de/Hardware-video-acceleration) kompiliert. Wer die VA-API für die Hardwarebeschleunigung in Firefox verwenden möchte, muss daher das Binärpaket von Mozilla verwenden (https://ftp.mozilla.org/pub/firefox/releases/, siehe im letzten Punkt dieses Artikels). 
 
