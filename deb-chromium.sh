@@ -72,7 +72,7 @@ Pin-Priority: 700
 
 ' | $SUDO tee /etc/apt/preferences.d/phd-chromium-browser
 
-echo 'Unattended-Upgrade::Allowed-Origins:: "freeshell.de/phd/chromium:${distro_codename}";' | $SUDO tee /etc/apt/apt.conf.d/52unattended-upgrades-chromium
+echo 'Unattended-Upgrade::Origins-Pattern {"site=freeshell.de"};' | $SUDO tee /etc/apt/apt.conf.d/52unattended-upgrades-chromium
 
 $SUDO apt install -y chromium
 
