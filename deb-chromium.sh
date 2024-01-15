@@ -49,6 +49,7 @@ source /etc/lsb-release
 echo "deb https://freeshell.de/phd/chromium/${DISTRIB_CODENAME} /" \
 | $SUDO tee /etc/apt/sources.list.d/phd-chromium.list
 
+#deprecated
 #$SUDO apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 869689FE09306074
 cd ~
 gpg --no-default-keyring --keyring gnupg-ring:~/phd-ubuntu-chromium-browser.gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 869689FE09306074
@@ -56,9 +57,6 @@ $SUDO  mv phd-ubuntu-chromium-browser.gpg /etc/apt/trusted.gpg.d/
 $SUDO  chown root:root /etc/apt/trusted.gpg.d/phd-ubuntu-chromium-browser.gpg
 $SUDO  chmod ugo+r /etc/apt/trusted.gpg.d/phd-ubuntu-chromium-browser.gpg
 $SUDO  chmod go-w /etc/apt/trusted.gpg.d/phd-ubuntu-chromium-browser.gpg
-
-#$SUDO add-apt-repository ppa:phd/chromium-browser
-$SUDO apt update 
 
 echo '
 # chromium
@@ -73,11 +71,10 @@ Pin-Priority: 700
 ' | $SUDO tee /etc/apt/preferences.d/phd-chromium-browser
 
 echo 'Unattended-Upgrade::Origins-Pattern {"site=freeshell.de"};' | $SUDO tee /etc/apt/apt.conf.d/52unattended-upgrades-chromium
-
+$SUDO apt update 
 $SUDO apt install -y chromium
 
 cat <<EOF
-
 
 Alles erledigt. Um Chromium wieder als Snap zu installieren, bitte die beiden
 Dateien '/etc/apt/preferences.d/phd-chromium-browser' und 
