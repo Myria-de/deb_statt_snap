@@ -15,7 +15,7 @@ Wo der Profilordner liegt und wie er heißt ermitteln Sie über die URL "about:p
 **Beenden Sie Firefox** und packen Sie den Ordner beispielsweise über den Dateimanager in eine ZIP- oder xz-Datei.
 
 # Firefox-Profil wiederherstellen
-Die Wiederherstellung ist nur möglich, wenn Sie die gleiche oder einen neurer Firefox-Version verwenden. Wenn Sie das Systempaket oder die Binärdateien von Mozilla eingerichtet haben, starten Sie Firefox und ermittlen Sie über "about:profiles" den Profilordner. **Beenden Sie Firefox wieder**. Über den Dateimanager benenen Sie den Profilordner um beispielsweise von "ogup4l3n.default-release" in "ogup4l3n.default-release.001". Beim Systempaket liegt das Profil im versteckten Ordner ".mozilla/firefox" (im Dateimanager einblenden mit Strg-H).
+Die Wiederherstellung ist nur möglich, wenn Sie die gleiche oder eine neurere Firefox-Version verwenden. Wenn Sie das Systempaket oder die Binärdateien von Mozilla eingerichtet haben, starten Sie Firefox und ermittlen Sie über "about:profiles" den Profilordner. **Beenden Sie Firefox wieder**. Über den Dateimanager benenen Sie den Profilordner um beispielsweise von "ogup4l3n.default-release" in "ogup4l3n.default-release.001". Beim Systempaket liegt das Profil im versteckten Ordner ".mozilla/firefox" (im Dateimanager einblenden mit Strg-H).
 Danach erstellen Sie den neuen Ordner "ogup4l3n.default-release". Kopieren Sie den Inhalt des gesicherten Profilordners - nicht den Ordner selbst - in den Ordner "ogup4l3n.default-release". In unserem Beispiel kopieren Sie den Inhalt von "88f7mmyo.default" in den Ordner "ogup4l3n.default-release"
 
 # Chromium-Profil sichern
