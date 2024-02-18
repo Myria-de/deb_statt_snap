@@ -10,7 +10,7 @@ Folgen Sie der nachfolgenden Anleitung, um das Systempaket aus dem PPA zu instal
 # Firefox-Profil sichern
 Bevor Sie die Snap-App entfernen, erstellen Sie ein Backup Ihres Firefox-Profils. Das ist sinvoll, wenn Sie in Firefox Lesezeichen, Passwörter etc. speichern. Zu Sicherheit sollten Sie ein Backup auch erstellen, wenn Sie sich in Firefox mit einem Mozilla-Konto anmelden und die Synchronisierung der Daten aktiviert haben. Achten Sie darauf, dass die Synchronisierung abgeschlossen ist.
 
-Wo der Profilodner liegt und wie er heißt ermittlen Sie über die URL "about:profiles". Bei einer Snap-Installation heißt er beispielsweise "88f7mmyo.default" und liegt standardmäßig im Ordner "snap/firefox/common/.mozilla/firefox" in Ihrem Home-Verzeichnis.
+Wo der Profilordner liegt und wie er heißt ermitteln Sie über die URL "about:profiles". Bei einer Snap-Installation heißt er beispielsweise "88f7mmyo.default" und liegt standardmäßig im Ordner "snap/firefox/common/.mozilla/firefox" in Ihrem Home-Verzeichnis.
 
 **Beenden Sie Firefox** und packen Sie den Ordner beispielsweise über den Dateimanager in eine ZIP- oder xz-Datei.
 
