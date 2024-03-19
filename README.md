@@ -1,6 +1,8 @@
 # Firefox und Chromium als DEB-Paket für Ubuntu installieren
 Die Beschreibung in diesem Atikel wurde unter **Ubuntu 22.04** getestet.
 
+**Update 18.03.2924:** Mozilla bietet inzwischen selbst ein Repositorium für Firefox an. Es wird vom Script deb-firefox.sh verwendet. Die Dateien sind identisch mit denen von https://ftp.mozilla.org/pub/firefox/releases/ (siehe ganz unten). Die Einbindung des Mozilla-Repositoriums ist empfehlenswert, weil darüber auch Updates automatisch installiert werden.
+
 **Update 08.01.2024:** Das Firefox-Systempaket aus dem PPA https://launchpad.net/~mozillateam/+archive/ubuntu/ppa ist zurzeit ohne Unterstützung für die VA-API (siehe https://github.com/Myria-de/Hardware-video-acceleration) kompiliert. Wer die VA-API für die Hardwarebeschleunigung in Firefox verwenden möchte, muss daher das Binärpaket von Mozilla verwenden (https://ftp.mozilla.org/pub/firefox/releases/, siehe im letzten Punkt dieses Artikels). 
 
 Folgen Sie der nachfolgenden Anleitung, um das Systempaket aus dem PPA zu installieren. Danach laden Sie beispielsweise https://ftp.mozilla.org/pub/firefox/releases/121.0/linux-x86_64/de/ herunter und entpacken das Archiv in Ihr Home-Verzeichnis. Es ist allerdings nicht zwingend erforderlich, das Snap-Paket zu entfernen. Das Binär- und Snap-Paket lässt sich auch nebeneinander verwenden.
