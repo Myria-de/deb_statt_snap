@@ -76,3 +76,14 @@ echo 'Unattended-Upgrade::Origins-Pattern {"site=packages.mozilla.org"};' | $SUD
 
 $SUDO apt update && $SUDO apt -y --allow-downgrades install firefox
 $SUDO apt -y --allow-downgrades install firefox-l10n-de
+
+
+cat <<EOF
+
+Alles erledigt. Um Firefox wieder als Snap zu installieren, bitte die
+Dateien '/etc/apt/preferences.d/mozilla', 
+'/etc/apt/apt.conf.d/52unattended-upgrades-firefox' und '/etc/apt/sources.list.d/mozilla.list'
+entfernen und dann
+'sudo snap install firefox' aufrufen. 
+
+EOF
