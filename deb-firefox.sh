@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# script LinuxWelt; author: David Wolski <pcwelt@gmail.com>;
+# script LinuxWelt; author: David Wolski, Thorsten Eggeling  <pcwelt@gmail.com>;
 cat <<HEREDOC
 
 .____    .__                     __      __       .__   __
@@ -11,55 +11,68 @@ cat <<HEREDOC
 
 Dieses Script dient dazu, einen als als Snap installierten
 Firefox in Ubuntu 22.04 LTS / 22.10 / 23.04 gegen Firefox aus
-dem PPA https://launchpad.net/~mozillateam/+archive/ubuntu/ppa
+dem Mozilla-Repository https://packages.mozilla.org
 auszutauschen.
 
 Achtung: Einstellungen, Lesezeichen und gespeicherte Kennworte 
-aus dem installierten Firefox gehen dabei verloren und müssen
+aus dem installierten Snap-Firefox gehen dabei verloren und müssen
 deshalb zuerst exportiert/gespeichert werden.
 
 Einige Aktionen benötigen root-Rechte und das Script wird dann
 'sudo' vor den betreffenden Befehlen aufrufen.
 
 HEREDOC
-
 SUDO=''
 if (( $EUID != 0 )); then
     SUDO='sudo'
 fi
 
-read -r -p "Soll Firefox als Snap nun de-installiert werden? [j/n] " response
+if pgrep -x "firefox" > /dev/null
+then
+    echo "Bitte Firefox zuerst beenden"
+    exit 1
+fi
+
+read -r -p "Haben Sie ein Backup des Snap-Benutzerprofils erstellt? Soll Firefox als Snap jetzt deinstalliert werden? [j/n] " response
 response=${response,,}    # tolower
 if ! [[ "$response" =~ ^(ja|j)$ ]]; then
   exit
 fi
+
 
 $SUDO snap remove firefox
 
-read -r -p "Soll Firefox nun als DEB installiert werden werden? [j/n] " response
-response=${response,,}    # tolower
-if ! [[ "$response" =~ ^(ja|j)$ ]]; then
-  exit
+if [ ! -e /etc/apt/keyrings ]
+then
+$SUDO install -d -m 0755 /etc/apt/keyrings
 fi
 
-$SUDO add-apt-repository ppa:mozillateam/ppa
+
+# wget?
+if [ -z $(which wget) ]
+then
+echo "Installiere wget"
+sudo apt -y install wget
+fi
+
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | $SUDO tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+
+gpg -n -q --import --import-options import-show /etc/apt/keyrings/packages.mozilla.org.asc | awk 'BEGIN{code=0}/pub/{getline; gsub(/^ +| +$/,""); if($0 == "35BAA0B33E9EB396F59CA838C0BA5CE6DC6315A3") {print "\nDer Fingeabdruck des Schlüssels stimmt überein: ("$0").\n"} else {print "\nPrüfung fehlgeschlagen: Der Fingerabdruck ("$0") stimmt nicht überein.\n";code=1}} END{exit code}'
+if [ $? == 1 ]
+then
+echo "Abbruch"
+exit 1
+fi
+
+echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | $SUDO tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
 
 echo '
 Package: *
-Pin: release o=LP-PPA-mozillateam
-Pin-Priority: 1001
-' | $SUDO tee /etc/apt/preferences.d/mozilla-firefox
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+' | $SUDO tee /etc/apt/preferences.d/mozilla 
 
-echo 'Unattended-Upgrade::Allowed-Origins:: "LP-PPA-mozillateam:${distro_codename}";' | $SUDO tee /etc/apt/apt.conf.d/51unattended-upgrades-firefox
-$SUDO apt update
-$SUDO apt -y install firefox firefox-locale-de
+echo 'Unattended-Upgrade::Origins-Pattern {"site=packages.mozilla.org"};' | $SUDO tee /etc/apt/apt.conf.d/52unattended-upgrades-firefox
 
-cat <<EOF
-
-
-Alles erledigt. Um Firefox wieder als Snap zu installieren, bitte die beiden
-Dateien '/etc/apt/preferences.d/mozilla-firefox' und 
-'/etc/apt/apt.conf.d/51unattended-upgrades-firefox' entfernen und dann
-'sudo snap install firefox' aufrufen. 
-
-EOF
+$SUDO apt update && $SUDO apt -y --allow-downgrades install firefox
+$SUDO apt -y --allow-downgrades install firefox-l10n-de
