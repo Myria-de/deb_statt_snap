@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# script LinuxWelt; author: David Wolski <pcwelt@gmail.com>;
+# script LinuxWelt; author: David Wolski, Thorsten Eggeling <pcwelt@gmail.com>;
 cat <<HEREDOC
 
 .____    .__                     __      __       .__   __
@@ -29,7 +29,7 @@ if (( $EUID != 0 )); then
     SUDO='sudo'
 fi
 
-read -r -p "Soll Chromium als Snap (falls vorhanden) nun de-installiert werden? [j/n] " response
+read -r -p "Haben Sie ein Backup des Snap-Benutzerprofils erstellt? Soll Chromium als Snap (falls vorhanden) nun de-installiert werden? [j/n] " response
 response=${response,,}    # tolower
 if ! [[ "$response" =~ ^(ja|j)$ ]]; then
   exit
