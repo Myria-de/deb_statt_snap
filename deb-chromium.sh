@@ -76,9 +76,10 @@ $SUDO apt install -y chromium
 
 cat <<EOF
 
-Alles erledigt. Um Chromium wieder als Snap zu installieren, bitte die beiden
-Dateien '/etc/apt/preferences.d/phd-chromium-browser' und 
-'/etc/apt/apt.conf.d/52unattended-upgrades-chromium' entfernen und dann
+Alles erledigt. Um Chromium wieder als Snap zu installieren, bitte die
+Dateien '/etc/apt/preferences.d/phd-chromium-browser',
+'/etc/apt/apt.conf.d/52unattended-upgrades-chromium'
+und '/etc/apt/sources.list.d/phd-chromium.list' entfernen und dann
 'sudo snap install chromium' aufrufen. 
 
 EOF
