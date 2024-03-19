@@ -1,5 +1,5 @@
 # Firefox und Chromium als DEB-Paket für Ubuntu installieren
-Die Beschreibung in diesem Atikel wurde unter **Ubuntu 22.04** getestet.
+Die Beschreibung in diesem Artikel wurde unter **Ubuntu 22.04** getestet.
 
 **Update 18.03.2924:** Mozilla bietet inzwischen selbst ein Repositorium für Firefox an. Es wird vom Script deb-firefox.sh verwendet. Die Dateien sind identisch mit denen von https://ftp.mozilla.org/pub/firefox/releases/ (siehe ganz unten). Die Einbindung des Mozilla-Repositoriums ist empfehlenswert, weil darüber auch Updates automatisch installiert werden.
 
